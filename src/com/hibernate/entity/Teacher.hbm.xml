@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+        <!DOCTYPE hibernate-mapping PUBLIC
+                "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--数据库表和类对应-->
+<hibernate-mapping package="com.hibernate.entity">
+
+<class name="Teacher" table="teacher">
+    <id name="id" type="java.lang.Integer">
+        <generator class="native" />
+    </id>
+    <property name="name" type="java.lang.String"  />
+    <property name="age" type="java.lang.Integer"  />
+    <property name="sex" type="java.lang.String"  />
+    <property name="borthday" type="java.util.Date"/>
+</class>
+
+</hibernate-mapping>
