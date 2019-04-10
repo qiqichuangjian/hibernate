@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+        <!DOCTYPE hibernate-mapping PUBLIC
+                "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- package="com.hibernate.entity" -->
+<hibernate-mapping package="com.hibernate.entity" > <!-- mapping 是hibernate映射文件  -->
+<!--  name=类名   table=表名   -->
+<class name="Student" table="t_student"  >
+    <!--id 主键  name 属性  column 列名   type 类型  -->
+    <id name="id" column="s_id" type="java.lang.Integer">
+        <!--  主键生成策略  increment hibernate框架的生成策略 native是mysql数据库  -->
+        <generator class="native" />
+        <!--<generator class="uuid" />需要把id变成String类型-->
+    </id>
+    <property name="name" type="java.lang.String" column="s_name"  />
+    <property name="sex" type="java.lang.String" column="s_sex" />
+    <property name="birthday" type="java.util.Date" column="birthday" />
+    <!--今年year-生日year=age-->
+    <!--insert="false"   update="false"代表不改变该字段，所以不可以有column=""，算出什么就是什么-->
+    <property name="age" insert="false" update="false"
+              formula="(select (year(now()) - year(birthday) ) from t_student s where s.s_id=s_id)"/>
+    <!--多对一关联映射   如果不在同一个包下，class="包名.Classes"-->
+    <many-to-one name="classes" column="c_id" class="Classes" cascade="save-update" ></many-to-one>
+</class>
+</hibernate-mapping>
