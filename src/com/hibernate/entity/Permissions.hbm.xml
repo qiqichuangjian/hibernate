@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+        <!DOCTYPE hibernate-mapping PUBLIC
+                "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- package="com.hibernate.entity" -->
+<hibernate-mapping package="com.hibernate.entity" > <!-- mapping 是hibernate映射文件  -->
+<!--  name=包名.类名   table=表名   -->
+<class name="Permissions" table="permissions"  >
+    <!--id 主键  name 属性  column 列名   type 类名  -->
+    <id name="p_id" column="p_id"  >
+        <!--  主键生成策略  increment hibernate框架的生成策略
+         identity  mysql 底层数据库生成表识符
+         native 是mysql数据库  -->
+        <generator class="native" />
+    </id>
+    <property name="p_name" type="java.lang.String" column="p_name"   />
+    <!--table="role_permissions"  中间表-->
+    <set name="roleSet" table="role_permissions">
+        <key column="p_id"></key>
+        <many-to-many column="r_id" class="Role"></many-to-many>
+    </set>
+</class>
+</hibernate-mapping>
