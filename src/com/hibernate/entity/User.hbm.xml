@@ -19,8 +19,11 @@
     <!--cascade="all"级联-->
     <set name="roleSet" table="user_role" cascade="all" >
         <key column="u_id"></key>
-        <many-to-many column="r_id" class="Role"></many-to-many>
+        <many-to-many column="r_id" class="Role"/>
     </set>
 </class>
-
+    <!-- 注意query标签的位置 -->
+    <query name="queryUser">
+        <![CDATA[from User u where u.u_name like :u_name]]>
+    </query>
 </hibernate-mapping>

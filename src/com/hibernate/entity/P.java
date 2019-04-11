@@ -46,4 +46,7 @@ public class P {
     public P(String p_name) {
         this.p_name = p_name;
     }
+
+    public P() {
+    }
 }

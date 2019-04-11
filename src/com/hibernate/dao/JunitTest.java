@@ -55,11 +55,11 @@ public class JunitTest {
     @Test
     public void deleteUR(){
         //查询到用户1
-        U user = session.get(U.class, 1);
+        U u = session.get(U.class, 1);
         //查询到角色1
-        R role = session.get(R.class, 1);
+        R r = session.get(R.class, 1);
         //删除remove用户1的角色1
-        user.getRoles().remove(role);
+        u.getRoles().remove(r);
     }
     //添加用户的角色
     @Test
@@ -92,7 +92,7 @@ public class JunitTest {
     @Test
     public void deleteRP(){
         //查询到角色7
-        R role = session.get(R.class, 7);
+        R role = session.get(R.class, 5);
         //查询到权限1
         P permissions=session.get(P.class,1);
         //删除remove角色7的权限1
@@ -102,7 +102,7 @@ public class JunitTest {
     @Test
     public void addRP(){
         //查询到角色7
-        R role = session.get(R.class, 7);
+        R role = session.get(R.class, 5);
         //查询到权限1
         P permissions=session.get(P.class,1);
         //删除remove角色7的权限1

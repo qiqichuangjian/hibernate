@@ -52,4 +52,7 @@ public class U {
     public U(String u_name) {
         this.u_name = u_name;
     }
+
+    public U() {
+    }
 }

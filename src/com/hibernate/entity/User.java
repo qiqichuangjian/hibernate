@@ -44,4 +44,12 @@ public class User {
     public User(String u_name) {
         this.u_name = u_name;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "u_id=" + u_id +
+                ", u_name='" + u_name + '\'' +
+                '}';
+    }
 }
