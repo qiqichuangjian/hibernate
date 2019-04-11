@@ -15,8 +15,6 @@ import org.junit.Test;
 public class StaffDao {
     SessionFactory sessionFactory=HibernateUtil.getSessionFactory();
     Session session;
-
-
     @Before
     public void before() {
         session=sessionFactory.openSession();
@@ -46,5 +44,19 @@ public class StaffDao {
     public void queryClasses() {
         Staff s = session.get(Staff.class, 2);
         System.out.println(s);
+    }
+    @Test
+    public void update() {
+        Staff s = session.get(Staff.class, 2);
+        Department d=session.get(Department.class,2);
+        s.setDepartment(d);
+        session.update(s);
+    }
+    @Test
+    public void add() {
+        Department department = new Department();
+        department.setName("行政部");
+        session.save(department);
+
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 
 
 public class StudentDao {
-    static Session session = null;
+    Session session = null;
 
     @Before
     public void before() {
@@ -47,9 +47,9 @@ public class StudentDao {
 
     @Test
     public void update() {
-        Student student = session.get(Student.class, 4);
+        Student student = session.get(Student.class, 1);
         //修改哪条弄哪条，其余不用写
-        //student.setName("zhangsan");
+        student.setName("zhangsan");
         student.setSex("女");
         session.save(student);
     }
@@ -127,8 +127,28 @@ public class StudentDao {
         session.save(s2);
     }
     @Test
+    public void addStudentAndClass2(){
+        Classes classes = new Classes();
+        classes.setName("java2班");
+        //session.save(classes);
+        Student s1 =  new Student();
+        s1.setName("王五");
+        s1.setClasses(classes);
+        Student s2 =  new Student();
+        s2.setName("赵六");
+        s2.setClasses(classes);
+        session.save(s1);
+        session.save(s2);
+    }
+    //通过学生查找班级
+    @Test
     public void queryClasses() {
         Student s = session.get(Student.class, 2);
         System.out.println(s.getClasses().getName());
+    }
+    @Test
+    public void queryStudent(){
+        Student s = session.get(Student.class, 2);
+        System.out.println(s);
     }
 }

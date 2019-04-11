@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.one_one.entity"> <!-- mapping 是hibernate映射文件  -->
+    <class name="Wife" table="wife">
+        <id name="id" column="w_id">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="java.lang.String" column="w_name"/>
+        <!--constrained="true"共享主键-->
+        <one-to-one name="husBand" constrained="true" class="HusBand"/>
+    </class>
+</hibernate-mapping>

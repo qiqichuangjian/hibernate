@@ -7,13 +7,6 @@
     <id name="id" column="d_id"  >
         <generator class="native" />
     </id>
-
     <property name="name" type="java.lang.String" column="d_name"   />
-    <!--&lt;!&ndash;一对多     双向绑定&ndash;&gt;-->
-    <!--&lt;!&ndash; cascade="save-update"  强制级联保存 &ndash;&gt;-->
-    <!--<set name="departmentSet" cascade="save-update" inverse="true">-->
-        <!--<key column="d_id"></key>-->
-        <!--<one-to-many class="Staff"></one-to-many>-->
-    <!--</set>-->
 </class>
 </hibernate-mapping>

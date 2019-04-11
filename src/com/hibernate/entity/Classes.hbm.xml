@@ -15,12 +15,12 @@
         </id>
 
         <property name="name" type="java.lang.String" column="c_name"/>
-        <!--&lt;!&ndash;一对多     双向绑定&ndash;&gt;-->
-        <!--&lt;!&ndash; cascade="save-update"  强制级联保存 &ndash;&gt;-->
-        <!--<set name="studentSet" cascade="save-update" inverse="true">-->
-        <!--<key column="c_id"></key>-->
-        <!--<one-to-many class="Student"></one-to-many>-->
-        <!--</set>-->
+        <!--一对多     双向绑定-->
+        <!-- cascade="save-update"  强制级联保存 -->
+        <set name="studentSet" cascade="all" inverse="true">
+        <key column="c_id"></key>
+        <one-to-many class="Student"></one-to-many>
+        </set>
     </class>
 
 </hibernate-mapping>

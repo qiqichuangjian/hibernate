@@ -12,10 +12,11 @@ import javax.persistence.*;
 public class Staff01 {
     private Integer sid;
     private String sname;
-    private Department01  department01;//部门
+    private Department01 department01;//部门
+
     @Id
     @GeneratedValue(generator = "native")
-    @GenericGenerator(name="native" ,strategy = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     @Column(name = "s01_id")
     public Integer getSid() {
         return sid;
@@ -24,6 +25,7 @@ public class Staff01 {
     public void setSid(Integer sid) {
         this.sid = sid;
     }
+
     @Column(name = "s_name")
     public String getSname() {
         return sname;
@@ -32,7 +34,9 @@ public class Staff01 {
     public void setSname(String sname) {
         this.sname = sname;
     }
+
     @ManyToOne
+   //@ManyToOne就行了，完成了单向绑定
     @JoinColumn(name = "d_id")
     public Department01 getDepartment01() {
         return department01;

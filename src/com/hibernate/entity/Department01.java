@@ -39,13 +39,4 @@ public class Department01 {
                 ", dname='" + dname + '\'' +
                 '}';
     }
-
-
-    public Department01() {
-    }
-
-    public Department01(Integer did, String dname) {
-        this.did = did;
-        this.dname = dname;
-    }
 }

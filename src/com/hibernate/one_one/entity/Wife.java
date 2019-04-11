@@ -1,11 +1,17 @@
-package com.hibernate.entity;
+package com.hibernate.one_one.entity;
 
-/**
- * @Acthor:孙琪; date:2019/4/9;
- */
-public class Department {
+public class Wife {
     private Integer id;
     private String name;
+    private HusBand husBand;
+
+    public HusBand getHusBand() {
+        return husBand;
+    }
+
+    public void setHusBand(HusBand husBand) {
+        this.husBand = husBand;
+    }
 
     public Integer getId() {
         return id;
@@ -21,13 +27,5 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

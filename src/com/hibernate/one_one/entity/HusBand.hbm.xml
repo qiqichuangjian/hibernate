@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+        <!DOCTYPE hibernate-mapping PUBLIC
+                "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.one_one.entity" > <!-- mapping 是hibernate映射文件  -->
+<class name="HusBand" table="husband"  >
+    <id name="id" column="h_id"  >
+        <generator class="native" />
+    </id>
+    <property name="name" type="java.lang.String" column="h_name" />
+    <!--cascade="save-update" 联级操作-->
+    <one-to-one name="wife" class="Wife" cascade="save-update" />
+</class>
+</hibernate-mapping>
