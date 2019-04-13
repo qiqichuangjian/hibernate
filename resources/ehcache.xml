@@ -1,0 +1,86 @@
+<ehcache>
+   	<!-- 指定一个文件目录，当EHCache把数据写到硬盘上时，将把数据写到这个目录下 -->
+    <diskStore path="c:\\ehcache"/>
+    
+    <!--  
+    	设置缓存的默认数据过期策略 
+    -->    
+	<defaultCache
+    	   maxElementsInMemory="50000"
+    	   clearOnFlush="false"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="3600"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="1024"
+           maxElementsOnDisk="100000"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+    </defaultCache>
+	<!-- 
+		name 设置缓存的名字，他的取值为类的完整名字或者类的集合的名字；
+		maxElementsInMemory 设置基于内存的缓存可存放的对象的最大数目
+		eternal 如果为true，表示对象永远不会过期，此时会忽略timeToIdleSeconds和timeToLiveSeconds，默认为false;
+		timeToIdleSeconds 设定允许对象处于空闲状态的最长时间，以秒为单位；
+		timeToLiveSeconds 设定对象允许存在于缓存中的最长时间，以秒为单位；
+		overflowToDisk 如果为true,表示当基于内存的缓存中的对象数目达到maxElementsInMemory界限，会把溢出的对象写到基于硬盘的缓存中；
+	 -->
+
+
+	<!-- 
+	    name:缓存名称。
+	    maxElementsInMemory：缓存最大个数。
+	    eternal:对象是否永久有效，一但设置了，timeout将不起作用。
+	    timeToIdleSeconds：设置对象在失效前的允许闲置时间（单位：秒）。仅当eternal=false对象不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。
+	    timeToLiveSeconds：设置对象在失效前允许存活时间（单位：秒）。最大时间介于创建时间和失效时间之间。仅当eternal=false对象不是永久有效时使用，默认是0.，也就是对象存活时间无穷大。
+	    overflowToDisk：当内存中对象数量达到maxElementsInMemory时，Ehcache将会对象写到磁盘中。
+	    diskSpoolBufferSizeMB：这个参数设置DiskStore（磁盘缓存）的缓存区大小。默认是30MB。每个Cache都应该有自己的一个缓冲区。
+	    maxElementsOnDisk：硬盘最大缓存个数。
+	    diskPersistent：是否缓存虚拟机重启期数据 Whether the disk store persists between restarts of the Virtual Machine. The default value is false.
+	    diskExpiryThreadIntervalSeconds：磁盘失效线程运行时间间隔，默认是120秒。
+	    memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。
+	    clearOnFlush：内存数量最大时是否清除。 
+	 -->
+	 <!-- 系统全局变量：永不过期-->
+	<cache name="sysCache"
+		   maxElementsInMemory="50000"
+	       eternal="true"
+		   clearOnFlush="false"
+	       overflowToDisk="true"
+	       diskSpoolBufferSizeMB="1024"
+	       maxElementsOnDisk="100000"
+	       diskPersistent="false"
+	       diskExpiryThreadIntervalSeconds="120"
+	       memoryStoreEvictionPolicy="LFU"
+	       transactionalMode="off">
+	</cache>
+	        
+	<!-- 通用全局变量：1小时-->
+	<cache name="commonCache"
+		   maxElementsInMemory="50000"
+		   clearOnFlush="false"
+	       eternal="false"
+	       timeToIdleSeconds="3600"
+	       timeToLiveSeconds="3600"
+	       overflowToDisk="true"
+	       diskSpoolBufferSizeMB="1024"
+	       maxElementsOnDisk="100000"
+	       diskPersistent="false"
+	       diskExpiryThreadIntervalSeconds="120"
+	       memoryStoreEvictionPolicy="LFU"
+	       transactionalMode="off">
+	</cache>
+	
+	<!-- Sample cache named sampleCache2
+	    This cache contains 1000 elements. Elements will always be held in memory.
+	    They are not expired. -->
+	<cache name="sampleCache"
+	    maxElementsInMemory="1000"
+	    eternal="true"
+	    timeToIdleSeconds="0"
+	    timeToLiveSeconds="0"
+	    overflowToDisk="false"
+	    />
+</ehcache>

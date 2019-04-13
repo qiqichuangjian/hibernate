@@ -1,5 +1,7 @@
 package com.hibernate.entity;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY,region = "commonCache")
 public class User {
 
     private int id;
